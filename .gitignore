@@ -50,6 +50,6 @@
 */test/
 */web/
 */windows/
-*/.gitignore
-*/.metadata
-*/README.md
+*/.gitignore/
+*/.metadata/
+*/README.md/
