@@ -34,3 +34,9 @@
 
 ### Criando seu primeiro app
 Consultar este [documento](https://github.com/jeanmmlima/flutter-guide/blob/main/CRIANDO-PRIMEIRO-APP.md).
+
+### Executando Projetos do Repositório
+
+1. Crie um projeto novo;
+2. Baixe ou clone um projeto deste repositório. Mova os arquivos baixados para a pasta do novo projeto do passo 1. Você deve substituir todos os arquivos. Recomendo que você delete os arquivos do novo projeto criado e depois mova os arquivos baixados para dentro da pasta.
+3. Quando mover os arquivos, acesse o diretório do projeto via terminal ou com o terminal do VSCode aberto no seu projeto. Utilize o comando ```flutter pub get``` para atualizar os pacotes de acordo com os arquivos baixados;
