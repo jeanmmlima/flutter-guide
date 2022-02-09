@@ -31,3 +31,6 @@
  * 4.3 Flutter e Dart plugin não instalados: Abrir o Android Studio, na tela de "boas-vindas", clicar na opção *Plugin*. Buscar por *Flutter* e instalar o plugin. Buscar por *Dart* e instalar o plugin.
  * 4.4 (**MacOS**): Cocoapods: Instalar o cocoapods ```sudo gem install cocoapods``` OU (caso dê erro), instalar o *brew* e rodar os seguintes comandos: 1. ``` brew cleanup -d -v``` e 2. ```brew install cocoapods```. 
 5. Execute ```flutter doctor``` mais uma vez e, com todas as pendências resolvidas (**No issues found!**), seu ambiente está pronto para desenvolver aplicativos **Flutter**! (Ufa! :sweat_smile:)
+
+### Criando seu primeiro app
+Consultar este [documento](https://github.com/jeanmmlima/flutter-guide/blob/main/CRIANDO-PRIMEIRO-APP.md).
