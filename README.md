@@ -2,19 +2,32 @@
 
 ## Configuração do Ambiente 
 
+### Pré-requisitos
+
 1. Instalar o Java. JDK 8 é recomendado: [Java 8](https://www.oracle.com/java/technologies/downloads/#jdk8-windows). Instalar também o [JRE 8](https://www.oracle.com/java/technologies/downloads/#jre8-windows).
 2. Instalar a IDE Visual Studio Code: [VSCode](https://code.visualstudio.com)
- * 2.1 Abrir o VSCode e  instalar a Extensão: Flutter. 
-3. **Usuário MacOSX**: instalar, via AppStore, a ferramente XCode antes de ir para o passo 4.
+ * Abrir o VSCode e instalar a Extensão: Flutter. 
+3. **Usuário MacOS**: instalar, via AppStore, a ferramente XCode antes de ir para o passo 4. Usuários Linux e Windows, pular essa etapa.
 4. Instalar o [Android Studio](https://developer.android.com/studio?hl=pt-br#downloads). 
-  * 4.1 Configurando Android Virtual Device (AVD): [Tutorial AVD](https://github.com/jeanmmlima/flutter-guide/blob/main/docs/Tutorial%20AVD%20-%20Android%20Studio.pdf)
-5. Instalar o Git via [link](https://git-scm.com/downloads) ou via terminal: 
+  * Configurando Android Virtual Device (AVD): [Tutorial AVD.](https://github.com/jeanmmlima/flutter-guide/blob/main/docs/Tutorial%20AVD%20-%20Android%20Studio.pdf)
+5. Instalar o Git via [instalador](https://git-scm.com/downloads) ou via terminal: 
 
-- Ubuntu e Debian
-``` 
-apt-get install git
-```
-- MacOS
-```
-$ brew install git
+- Ubuntu e Debian ```  $ apt-get install git ```
+- MacOS ``` $ brew install git ```
 
+### Instalando Flutter
+
+1. **Baixe o Flutter [aqui](https://docs.flutter.dev/get-started/install) de acordo com seu sistema operacional**. Atenção, é importante que você leia a documentação do flutter sobre a instalação, pois para cada sistema operacional há especificidades. De maneiral geral, quando selecionar o sistema operacional, você vai poder baixar o **Flutter SDK** (primero passo da opção *Get the Flutter SDK*) que vem em um arquivo .zip (windows e macos) ou tar.xz (linux). 
+2. **Descompacte o Flutter (arquivo baixado) para um diretório de sua preferência e que não seja necessário permissão/privilégios de administrador**. Por exemplo: C:\Users\<nome-do-usuario>\Documents OU C:\development (OBS: diretório *development* criado dentro de C:). 
+3. **Adicionar o Flutter a variável de ambiente *PATH***. Assim, os comandos do Flutter possam ser chamados de qualquer lugar. Essa operação varia de acordo com o sistema operacional. Mais uma vez, recomendo fortemente a leitura da documentção da instalação do Flutter para que você adicione o Flutter ao *PATH*. Aqui vamos explicar para o SO Windows:
+  * (WINDOWS) Vá em Meu computador (clique com direito) --> Propriedades --> Configurações Avançadas do Sistema --> Variáveis de Ambiente. Selecione a variável *Path* e clique em *Editar...*. Na nova janela, clique em *Novo* e informe todo o caminho até o Flutter (onde você extraiu o arquivo baixado) seguindo do diretório bin: ``` c:\todo-caminho-ate-seu-diretorio-flutter\flutter\bin ```. Por exemplo, se você extraiu para a pasta C:\development, a informação que deve ser inserida em *Path* é: ```c:\development\flutter\bin```. Após inserir o caminho, clique em OK e OK para confirmar a operação. 
+4. **Flutter Doctor**: com o Flutter devidamente inserio do *Path*, abra um novo terminal e execute o comando: 
+ ```
+ flutter doctor
+ ```
+*Flutter Doctor* vai relatar as pedência que ainda faltam na sua instalação e, dependendo da pendência, ele também te informa como resolver.  Mais uma vez, recomendo fortemente ler a docoumentação da instalação do Flutter. Para cada caso, o resultado do *Flutter Doctor* pode variar, mas há pendências comuns:
+ * 4.1 Android Command Line tools: Baixe o *Command line tools* [aqui](https://developer.android.com/studio#downloads). Role a página até encontrar a opção *Command Line tools*. Quando baixar, descompacte o arquivo para dentro da pasta *sdk* que estará, por sua vez, dentro do diretório de instalação do Android Studio (```C:\caminho-ate-Android-Studio\Android\sdk```). 
+ * 4.2 Android Licenses: Como sugerido pelo próprio *Flutter Doctor*, rode o comando: ```fluter doctor -android-licenses```.
+ * 4.3 Flutter e Dart plugin não instalados: Abrir o Android Studio, na tela de "boas-vindas", clicar na opção *Plugin*. Buscar por *Flutter* e instalar o plugin. Buscar por *Dart* e instalar o plugin.
+ * 4.4 (**MacOS**): Cocoapods: Instalar o cocoapods ```sudo gem install cocoapods``` OU (caso dê erro), instalar o *brew* e rodar os seguintes comandos: 1. ``` brew cleanup -d -v``` e 2. ```brew install cocoapods```. 
+5. Execute ```flutter doctor``` mais uma vez e, com todas as pendências resolvidas (**No issues found!**), seu ambiente está pronto para desenvolver aplicativos **Flutter**! (Ufa! :sweat_smile:)
