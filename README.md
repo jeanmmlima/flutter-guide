@@ -1,8 +1,8 @@
 # Guia para desenvolvimento Flutter
 
-## Configuração do Ambiente 
+## 1. Configuração do Ambiente 
 
-### Pré-requisitos
+### 1.1 Pré-requisitos
 
 1. Instalar o Java. JDK 8 é recomendado: [Java 8](https://www.oracle.com/java/technologies/downloads/#jdk8-windows). Instalar também o [JRE 8](https://www.oracle.com/java/technologies/downloads/#jre8-windows).
 2. Instalar a IDE Visual Studio Code: [VSCode](https://code.visualstudio.com)
@@ -15,7 +15,7 @@
 - Ubuntu e Debian ```  $ apt-get install git ```
 - MacOS ``` $ brew install git ```
 
-### Instalando Flutter
+### 1.2 Instalando Flutter
 
 1. **Baixe o Flutter [aqui](https://docs.flutter.dev/get-started/install) de acordo com seu sistema operacional**. Atenção, é importante que você leia a documentação do flutter sobre a instalação, pois para cada sistema operacional há especificidades. De maneiral geral, quando selecionar o sistema operacional, você vai poder baixar o **Flutter SDK** (primero passo da opção *Get the Flutter SDK*) que vem em um arquivo .zip (windows e macos) ou tar.xz (linux). 
 2. **Descompacte o Flutter (arquivo baixado) para um diretório de sua preferência e que não seja necessário permissão/privilégios de administrador**. Por exemplo: C:\Users\<nome-do-usuario>\Documents OU C:\development (OBS: diretório *development* criado dentro de C:). 
@@ -32,10 +32,10 @@
  * 4.4 (**MacOS**): Cocoapods: Instalar o cocoapods ```sudo gem install cocoapods``` OU (caso dê erro), instalar o *brew* e rodar os seguintes comandos: 1. ``` brew cleanup -d -v``` e 2. ```brew install cocoapods```. 
 5. Execute ```flutter doctor``` mais uma vez e, com todas as pendências resolvidas (**No issues found!**), seu ambiente está pronto para desenvolver aplicativos **Flutter**! (Ufa! :sweat_smile:)
 
-### Criando seu primeiro app
+## 2. Criando seu primeiro app
 Consultar este [documento](https://github.com/jeanmmlima/flutter-guide/blob/main/CRIANDO-PRIMEIRO-APP.md).
 
-### Executando Projetos do Repositório
+## 3. Executando Projetos do Repositório
 
 1. Crie um projeto novo;
 2. Baixe ou clone um projeto deste repositório. Mova os arquivos baixados para a pasta do novo projeto do passo 1. Você deve substituir todos os arquivos. Recomendo que você delete os arquivos do novo projeto criado e depois mova os arquivos baixados para dentro da pasta.
