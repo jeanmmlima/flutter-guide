@@ -44,3 +44,12 @@
 */android/app/debug
 */android/app/profile
 */android/app/release
+
+*/android/
+*/ios/
+*/test/
+*/web/
+*/windows/
+*/.gitignore
+*/.metadata
+*/README.md
