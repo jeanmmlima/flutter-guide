@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 
+//importando componente questão
+import './question.dart';
+import './answer.dart';
+
 main() {
   //para rodar o app, chamar runApp e passar uma instancia do componente criado
   runApp(new PerguntaApp());
@@ -9,9 +13,9 @@ main() {
 main() => runApp(new PerguntaApp());
 */
 
-/* 
+/* widget app STATELESS - sem estado interno
 o stateless widget torna pergunta app um widget 
-*/
+
 class PerguntaApp extends StatelessWidget {
   //variavel mutável em componente sem estado? forma ERRADA!
   //var perguntaSelecionada = 0;
@@ -92,5 +96,65 @@ class PerguntaApp extends StatelessWidget {
         */
       ),
     );
+  }
+}
+*/
+
+/**
+ * Classe Steteful
+ */
+
+//classe que gerenciao estado do componente stateful
+//_ significa que ela fica no modo privado FORA do escopo desse arquivo;
+class _PerguntaAppState extends State<PerguntaApp> {
+  var _perguntaSelecionada = 0;
+
+  //método priva
+  void _responder() {
+    setState(() {
+      _perguntaSelecionada++;
+    });
+    print(_perguntaSelecionada);
+  }
+
+  /* método build renderiza arvore de componentes e 
+  tal árvore depende do ESTADO para ser renderizada
+  em componentes stateful. Logo vem para o State
+  */
+  @override
+  Widget build(BuildContext context) {
+    final List<String> perguntas = [
+      'Qual é sua cor favorita?',
+      'Qual é o seu animal favorito?'
+    ];
+
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text('Perguntas'),
+        ),
+        body: Column(
+          children: [
+            Question(perguntas.elementAt(_perguntaSelecionada)),
+            Answer('Resposta 1', _responder),
+            Answer('Resposta 2', _responder),
+            Answer('Resposta 3', _responder),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class PerguntaApp extends StatefulWidget {
+  //precisa implementa o método que cria um estado
+
+  /* FORMA 1
+  State<PerguntaApp> createState() {
+    return PerguntaAppState();
+  }*/
+
+  _PerguntaAppState createState() {
+    return _PerguntaAppState();
   }
 }
