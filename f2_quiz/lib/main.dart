@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 //importando componente questão
 import './question.dart';
 import './answer.dart';
+import './resultado.dart';
 
 main() {
   //para rodar o app, chamar runApp e passar uma instancia do componente criado
@@ -109,6 +110,26 @@ class PerguntaApp extends StatelessWidget {
 class _PerguntaAppState extends State<PerguntaApp> {
   var _perguntaSelecionada = 0;
 
+  /*
+    final List<String> perguntas = [
+      'Qual é sua cor favorita?',
+      'Qual é o seu animal favorito?'
+    ];*/
+  final List<Map<String, Object>> _perguntas = const [
+    {
+      'texto': 'Qual é sua cor favorita?',
+      'respostas': ['Preto', 'Vermelho', 'Verde', 'Branco']
+    },
+    {
+      'texto': 'Qual é o seu animal favorito?',
+      'respostas': ['Coelho', 'Cobra', 'Elefante', 'Leão']
+    },
+    {
+      'texto': 'Qual é o seu instrutor favorito?',
+      'respostas': ['Maria', 'João', 'Leo', 'Jean']
+    },
+  ];
+
   //método priva
   void _responder() {
     setState(() {
@@ -117,31 +138,54 @@ class _PerguntaAppState extends State<PerguntaApp> {
     print(_perguntaSelecionada);
   }
 
+  bool get temPerguntaSelecionada {
+    return _perguntaSelecionada < _perguntas.length - 1;
+  }
+
   /* método build renderiza arvore de componentes e 
   tal árvore depende do ESTADO para ser renderizada
   em componentes stateful. Logo vem para o State
   */
   @override
   Widget build(BuildContext context) {
-    final List<String> perguntas = [
-      'Qual é sua cor favorita?',
-      'Qual é o seu animal favorito?'
-    ];
+    /**
+     * FORMA 1 - IMPERATIVO
+     *     List<Widget> respostas = [];
+
+    for (String textoResposta
+        in perguntas[_perguntaSelecionada].cast()['respostas']) {
+      respostas.add(Answer(textoResposta, _responder));
+    }
+     */
+
+    /** FORMA 2 - DECLARATIVO 
+    List<String> respostas =
+        _perguntas[_perguntaSelecionada].cast()['respostas']; */
+
+    List<String> respostas =
+        _perguntas[_perguntaSelecionada].cast()['respostas'];
+
+    //converte lista de strings em uma lista de widgets (MAP)
+    List<Widget> answers = respostas.map((t) => Answer(t, _responder)).toList();
 
     return MaterialApp(
       home: Scaffold(
-        appBar: AppBar(
-          title: Text('Perguntas'),
-        ),
-        body: Column(
-          children: [
-            Question(perguntas.elementAt(_perguntaSelecionada)),
+          appBar: AppBar(
+            title: Text('Perguntas'),
+          ),
+          body: temPerguntaSelecionada
+              ? Column(
+                  children: [
+                    Question(
+                        _perguntas[_perguntaSelecionada]['texto'].toString()),
+                    /*
             Answer('Resposta 1', _responder),
             Answer('Resposta 2', _responder),
-            Answer('Resposta 3', _responder),
-          ],
-        ),
-      ),
+            Answer('Resposta 3', _responder), */
+                    ...answers
+                  ],
+                )
+              : Resultado()),
     );
   }
 }
