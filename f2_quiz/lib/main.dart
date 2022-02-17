@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import './question.dart';
 import './answer.dart';
 import './resultado.dart';
+import './questionario.dart';
 
 main() {
   //para rodar o app, chamar runApp e passar uma instancia do componente criado
@@ -162,11 +163,8 @@ class _PerguntaAppState extends State<PerguntaApp> {
     List<String> respostas =
         _perguntas[_perguntaSelecionada].cast()['respostas']; */
 
-    List<String> respostas =
-        _perguntas[_perguntaSelecionada].cast()['respostas'];
-
     //converte lista de strings em uma lista de widgets (MAP)
-    List<Widget> answers = respostas.map((t) => Answer(t, _responder)).toList();
+    //List<Widget> answers = respostas.map((t) => Answer(t, _responder)).toList();
 
     return MaterialApp(
       home: Scaffold(
@@ -174,7 +172,11 @@ class _PerguntaAppState extends State<PerguntaApp> {
             title: Text('Perguntas'),
           ),
           body: temPerguntaSelecionada
-              ? Column(
+              ? Questionario(
+                  perguntas: _perguntas,
+                  perguntaSelecionada: _perguntaSelecionada,
+                  responder:
+                      _responder) /* Column(
                   children: [
                     Question(
                         _perguntas[_perguntaSelecionada]['texto'].toString()),
@@ -184,7 +186,7 @@ class _PerguntaAppState extends State<PerguntaApp> {
             Answer('Resposta 3', _responder), */
                     ...answers
                   ],
-                )
+                ) */
               : Resultado()),
     );
   }
