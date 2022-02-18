@@ -110,6 +110,7 @@ class PerguntaApp extends StatelessWidget {
 //_ significa que ela fica no modo privado FORA do escopo desse arquivo;
 class _PerguntaAppState extends State<PerguntaApp> {
   var _perguntaSelecionada = 0;
+  var _pontuacaoTotal = 0;
 
   /*
     final List<String> perguntas = [
@@ -146,7 +147,7 @@ class _PerguntaAppState extends State<PerguntaApp> {
     },
   ];
 
-  //método priva
+  //método private com _
   void _responder() {
     setState(() {
       _perguntaSelecionada++;
@@ -154,8 +155,25 @@ class _PerguntaAppState extends State<PerguntaApp> {
     print(_perguntaSelecionada);
   }
 
+  void _responderComPontuacao(int nota) {
+    if (temPerguntaSelecionada) {
+      setState(() {
+        _perguntaSelecionada++;
+        _pontuacaoTotal += nota;
+      });
+      print(_pontuacaoTotal);
+    }
+  }
+
+  void _reiniciarQuiz() {
+    setState(() {
+      _perguntaSelecionada = 0;
+      _pontuacaoTotal = 0;
+    });
+  }
+
   bool get temPerguntaSelecionada {
-    return _perguntaSelecionada < _perguntas.length - 1;
+    return _perguntaSelecionada < _perguntas.length;
   }
 
   /* método build renderiza arvore de componentes e 
@@ -191,7 +209,7 @@ class _PerguntaAppState extends State<PerguntaApp> {
                   perguntas: _perguntas,
                   perguntaSelecionada: _perguntaSelecionada,
                   responder:
-                      _responder) /* Column(
+                      _responderComPontuacao) /* Column(
                   children: [
                     Question(
                         _perguntas[_perguntaSelecionada]['texto'].toString()),
@@ -202,7 +220,7 @@ class _PerguntaAppState extends State<PerguntaApp> {
                     ...answers
                   ],
                 ) */
-              : Resultado()),
+              : Resultado(_pontuacaoTotal, _reiniciarQuiz)),
     );
   }
 }
