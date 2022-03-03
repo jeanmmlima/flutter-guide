@@ -1,18 +1,22 @@
 import 'package:flutter/material.dart';
 
-class TransactionForm extends StatelessWidget {
+class TransactionForm extends StatefulWidget {
+  final void Function(String, double) onSubmit;
+
+  TransactionForm(this.onSubmit);
+
+  @override
+  State<TransactionForm> createState() => _TransactionFormState();
+}
+
+class _TransactionFormState extends State<TransactionForm> {
   /* Não é a forma correta de fazer já que o componente é SEM ESTADO
   String? title;
   String? value;
   */
-
   final titleController = TextEditingController();
+
   final valueController = TextEditingController();
-
-  //função para comunicação indireta com comonente pai (transaction user)
-  final void Function(String, double) onSubmit;
-
-  TransactionForm(this.onSubmit);
 
   _submitForm() {
     final title = titleController.text;
@@ -21,7 +25,7 @@ class TransactionForm extends StatelessWidget {
     if (title.isEmpty || value <= 0) {
       return;
     }
-    onSubmit(title, value);
+    widget.onSubmit(title, value);
   }
 
   @override
@@ -40,6 +44,7 @@ class TransactionForm extends StatelessWidget {
               ),
             ),
             TextField(
+              onSubmitted: (_) => _submitForm(), //botao no teclado
               controller: valueController,
               decoration: InputDecoration(
                 labelText: 'Valor (R\$)',

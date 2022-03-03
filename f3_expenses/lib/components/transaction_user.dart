@@ -13,6 +13,7 @@ class TransactionUser extends StatefulWidget {
 }
 
 class _TransactionUserState extends State<TransactionUser> {
+  /*
   final _transactions = [
     Transaction(
         id: 't1',
@@ -21,7 +22,7 @@ class _TransactionUserState extends State<TransactionUser> {
         date: DateTime.now()),
     Transaction(
         id: 't2', title: 'Conta de Luz', value: 211.30, date: DateTime.now()),
-  ];
+  ]; 
 
   _addTransaction(String title, double value) {
     final newTransaction = Transaction(
@@ -35,13 +36,13 @@ class _TransactionUserState extends State<TransactionUser> {
       _transactions.add(newTransaction);
     });
   }
-
+ */
   @override
   Widget build(BuildContext context) {
     return Column(
       children: <Widget>[
-        TransactionForm(_addTransaction),
-        TransactionList(_transactions),
+        // TransactionForm(_addTransaction),
+        //TransactionList(_transactions),
       ],
     );
   }
