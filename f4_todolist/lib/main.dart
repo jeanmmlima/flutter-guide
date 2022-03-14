@@ -17,15 +17,26 @@ class ToDoListApp extends StatelessWidget {
             body: Column(
               children: [
                 Container(
+                  margin: EdgeInsets.all(15),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: <Widget>[
                       TextField(
                         decoration: InputDecoration(labelText: 'Task'),
                       ),
-                      TextButton(onPressed: () {}, child: Text('Nova Tarefa'))
+                      TextButton(
+                        onPressed: () {},
+                        child: Text('Nova Tarefa'),
+                      )
                     ],
                   ),
+                ),
+                Column(
+                  children: <Widget>[
+                    Text('Item 1'),
+                    Text('Item 2'),
+                    Text('Item 3'),
+                  ],
                 )
               ],
             )));
