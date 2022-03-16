@@ -99,6 +99,17 @@ class _MyHomePageState extends State<MyHomePage> {
     Navigator.of(context).pop();
   }
 
+  //método para excluir a transação
+  //precisa fazer a comunicação indireta - apassar a função como parametor que será chamada pelo trans list
+  _removeTransaction(String id) {
+    setState(() {
+      _transactions.removeWhere((tr) {
+        //se retorna TRUE o elemento é removido!
+        return tr.id == id;
+      });
+    });
+  }
+
   //Modal
   _openTransactionFormModal(BuildContext context) {
     showModalBottomSheet(
@@ -136,7 +147,7 @@ class _MyHomePageState extends State<MyHomePage> {
               Chart(_recentTransactions),
               //TransactionUser()
               // TransactionForm(_addTransaction),
-              TransactionList(_transactions),
+              TransactionList(_transactions, _removeTransaction),
             ]),
       ),
       floatingActionButton: FloatingActionButton(
