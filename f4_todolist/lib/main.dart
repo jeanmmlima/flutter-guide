@@ -6,6 +6,18 @@ main() {
 }
 
 class ToDoListApp extends StatelessWidget {
+  _newTask() {
+    final title = _titleController.text;
+
+    //boas práticas de programação
+    if (title.isEmpty) {
+      return;
+    }
+    return print(title);
+  }
+
+  final _titleController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -22,10 +34,12 @@ class ToDoListApp extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: <Widget>[
                       TextField(
+                        controller: _titleController,
                         decoration: InputDecoration(labelText: 'Task'),
                       ),
                       TextButton(
-                        onPressed: () {},
+                        //comentar erro se digitar _newTask()
+                        onPressed: _newTask,
                         child: Text('Nova Tarefa'),
                       )
                     ],
