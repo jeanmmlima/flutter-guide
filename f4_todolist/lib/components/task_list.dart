@@ -48,13 +48,13 @@ class TaskList extends StatelessWidget {
                           decoration: BoxDecoration(
                             border: Border.all(
                               width: 2,
-                              color: task.date.day == DateTime.now().day
+                              color: task.date.day >= DateTime.now().day
                                   ? Colors.blue
                                   : Colors.red,
                             ),
                           ),
                           child: Text(DateFormat('d MMM y').format(task.date),
-                              style: task.date.day == DateTime.now().day
+                              style: task.date.day >= DateTime.now().day
                                   ? TextStyle(
                                       fontSize: 14,
                                       fontWeight: FontWeight.bold,

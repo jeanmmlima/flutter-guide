@@ -45,11 +45,9 @@ class _MyHomePageState extends State<MyHomePage> {
     )
   ];
 
-  _newTask(String title) {
-    final newTask = Task(
-        id: Random().nextDouble().toString(),
-        title: title,
-        date: DateTime.now());
+  _newTask(String title, DateTime date) {
+    final newTask =
+        Task(id: Random().nextDouble().toString(), title: title, date: date);
 
     //COM ESTADO
     setState(() {

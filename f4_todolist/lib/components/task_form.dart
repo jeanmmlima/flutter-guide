@@ -1,8 +1,11 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 class TaskForm extends StatefulWidget {
   //1. declarar funcao para comunicacao indireta
-  final void Function(String) onSubmit;
+  final void Function(String, DateTime) onSubmit;
 
   TaskForm(this.onSubmit);
 
@@ -13,6 +16,8 @@ class TaskForm extends StatefulWidget {
 class _TaskFormState extends State<TaskForm> {
   final _titleController = TextEditingController();
 
+  DateTime _selectedDate = DateTime.now();
+
   _submitForm() {
     final title = _titleController.text;
 
@@ -20,7 +25,24 @@ class _TaskFormState extends State<TaskForm> {
     if (title.isEmpty) {
       return;
     }
-    widget.onSubmit(title);
+    widget.onSubmit(title, _selectedDate);
+  }
+
+  _showDatePicker() {
+    showDatePicker(
+            context: context,
+            initialDate: DateTime.now(),
+            firstDate: DateTime.now(),
+            lastDate: DateTime(2023))
+        .then((pickedDate) {
+      //chamada no futuro
+      if (pickedDate == null) {
+        return;
+      }
+      setState(() {
+        _selectedDate = pickedDate;
+      });
+    });
   }
 
   @override
@@ -34,7 +56,26 @@ class _TaskFormState extends State<TaskForm> {
             controller: _titleController,
             decoration: InputDecoration(labelText: 'Task'),
           ),
-          TextButton(
+          Container(
+            child: Padding(
+              padding: const EdgeInsets.fromLTRB(0, 10, 0, 10),
+              child: Row(children: <Widget>[
+                Expanded(
+                  child: Text(_selectedDate == null
+                      ? 'Nenhuma data selecionada'
+                      : 'Data selecionada: ${DateFormat('dd/MM/y').format(_selectedDate)}'),
+                ),
+                TextButton(
+                    //style: TextButton.styleFrom(primary: Colors.blue),
+                    onPressed: _showDatePicker,
+                    child: Text(
+                      'Selecionar Data',
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    ))
+              ]),
+            ),
+          ),
+          ElevatedButton(
             //comentar erro se digitar _newTask()
             onPressed: _submitForm,
             child: Text('Nova Tarefa'),
