@@ -56,36 +56,45 @@ class _MyHomePageState extends State<MyHomePage> {
       _tasks.add(newTask);
     });
     //return print(title);
+
+    //fechando o modal
+    Navigator.of(context).pop();
+  }
+
+  //Modal
+  _openTaskFormModal(BuildContext context) {
+    showModalBottomSheet(
+        context: context,
+        builder: (_) {
+          return TaskForm(_newTask);
+        });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: Text('To Do List!'),
-        ),
-        body: Column(
-          children: [
-            TaskForm(_newTask),
-            /* Container(
-              margin: EdgeInsets.all(15),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: <Widget>[
-                  TextField(
-                    controller: _titleController,
-                    decoration: InputDecoration(labelText: 'Task'),
-                  ),
-                  TextButton(
-                    //comentar erro se digitar _newTask()
-                    onPressed: _newTask,
-                    child: Text('Nova Tarefa'),
-                  )
-                ],
-              ),
-            ) */
-            TaskList(_tasks)
-          ],
-        ));
+      appBar: AppBar(
+        title: Text('To Do List'),
+        actions: <Widget>[
+          IconButton(
+              onPressed: () => _openTaskFormModal(context),
+              icon: Icon(Icons.add))
+        ],
+      ),
+      body: Column(
+        children: [
+          //TaskForm(_newTask),
+          SizedBox(
+            height: 20,
+          ),
+          TaskList(_tasks),
+        ],
+      ),
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.add),
+        onPressed: () => _openTaskFormModal(context),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+    );
   }
 }
