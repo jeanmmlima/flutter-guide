@@ -15,7 +15,20 @@ main() {
 class ToDoListApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(home: MyHomePage());
+    final ThemeData tema = ThemeData();
+    return MaterialApp(
+      home: MyHomePage(),
+      theme: tema.copyWith(
+          colorScheme: tema.colorScheme
+              .copyWith(primary: Colors.purple, secondary: Colors.amber),
+          appBarTheme: AppBarTheme(
+              titleTextStyle: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 20,
+                  fontFamily: 'Helvetica')),
+          textTheme: tema.textTheme
+              .copyWith(button: TextStyle(fontWeight: FontWeight.bold))),
+    );
   }
 }
 

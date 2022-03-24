@@ -49,8 +49,8 @@ class TaskList extends StatelessWidget {
                             border: Border.all(
                               width: 2,
                               color: task.date.day >= DateTime.now().day
-                                  ? Colors.blue
-                                  : Colors.red,
+                                  ? Theme.of(context).colorScheme.primary
+                                  : Theme.of(context).colorScheme.secondary,
                             ),
                           ),
                           child: Text(DateFormat('d MMM y').format(task.date),
@@ -58,12 +58,15 @@ class TaskList extends StatelessWidget {
                                   ? TextStyle(
                                       fontSize: 14,
                                       fontWeight: FontWeight.bold,
-                                      color: Colors.blue,
+                                      color:
+                                          Theme.of(context).colorScheme.primary,
                                     )
                                   : TextStyle(
                                       fontSize: 14,
                                       fontWeight: FontWeight.bold,
-                                      color: Colors.red,
+                                      color: Theme.of(context)
+                                          .colorScheme
+                                          .secondary,
                                     )),
                         ),
                         Text(task.title,
