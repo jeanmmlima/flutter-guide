@@ -7,6 +7,9 @@ class CountryPlacesScreen extends StatelessWidget {
       appBar: AppBar(
         title: Text('Lugares para Conhecer'),
       ),
+      body: Container(
+        child: Text('Teste'),
+      ),
     );
   }
 }
