@@ -8,7 +8,7 @@ class CountriesScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
           centerTitle: true,
-          title: Text(
+          title: const Text(
             'Bora viajar?',
           )),
       body: GridView(
