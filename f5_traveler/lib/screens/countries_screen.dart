@@ -6,8 +6,13 @@ class CountriesScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Bora viajar?')),
+      appBar: AppBar(
+          centerTitle: true,
+          title: Text(
+            'Bora viajar?',
+          )),
       body: GridView(
+        padding: const EdgeInsets.all(25),
         gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
           maxCrossAxisExtent:
               200, //cada elemento com extenso maxima de 200 pixel
