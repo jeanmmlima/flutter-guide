@@ -4,6 +4,8 @@ import '../screens/countries_places_screen.dart';
 
 import '../models/country.dart';
 
+import 'package:f5_traveler/utils/app_routes.dart';
+
 class CountryItem extends StatelessWidget {
   final Country country;
 
@@ -12,12 +14,27 @@ class CountryItem extends StatelessWidget {
   void _selectCountry(BuildContext context) {
     //usar o navigator para fazer o push
     //colocar mais uma tela na nossa pilha de telas
+    /*
+    PARTE 1 - sem rotas nomeadas
     Navigator.of(context).push(
       MaterialPageRoute(
         builder: (_) {
           return CountryPlacesScreen(country);
         },
       ),
+    );
+    */
+
+    /* FORMA 1
+    Navigator.of(context).pushNamed(
+      '/country-places',
+      arguments: country,
+    );
+    */
+
+    Navigator.of(context).pushNamed(
+      AppRoutes.COUNTRY_PLACES,
+      arguments: country,
     );
   }
 

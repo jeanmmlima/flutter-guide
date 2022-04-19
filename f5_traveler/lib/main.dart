@@ -1,8 +1,11 @@
 import 'dart:ui';
 
+import 'package:f5_traveler/screens/countries_places_screen.dart';
 import 'package:flutter/material.dart';
 
 import 'screens/countries_screen.dart';
+
+import 'utils/app_routes.dart';
 
 void main() => runApp(MyApp());
 
@@ -24,7 +27,20 @@ class MyApp extends StatelessWidget {
                 fontSize: 20,
                 fontFamily: 'RobotoCondensed',
               ))),
-      home: CountriesScreen(),
+      //home: CountriesScreen(),
+
+      //rota inicial
+      //ROTAS NOMEADAS
+      routes: {
+        //nome : e função que retorna o widget (screen) a
+        //partir da rota declarada
+        /* FORMA 1
+        '/country-places': (ctx) => CountryPlacesScreen(),
+        '/': (ctx) => CountriesScreen(), // vira a rota raiz (home)
+        */
+        AppRoutes.COUNTRY_PLACES: (ctx) => CountryPlacesScreen(),
+        AppRoutes.HOME: (ctx) => CountriesScreen(),
+      },
     );
   }
 }
