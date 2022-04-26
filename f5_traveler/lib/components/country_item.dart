@@ -1,3 +1,4 @@
+import 'package:f5_traveler/screens/countries_places_screen.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
@@ -7,6 +8,7 @@ class CountryItem extends StatelessWidget {
   final Country country;
 
   const CountryItem(this.country);
+
   @override
   Widget build(BuildContext context) {
     return Container(
