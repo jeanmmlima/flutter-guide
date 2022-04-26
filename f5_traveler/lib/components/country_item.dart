@@ -1,37 +1,23 @@
+import 'package:f5_traveler/screens/countries_places_screen.dart';
+import '../utils/app_routes.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import '../screens/countries_places_screen.dart';
 
 import '../models/country.dart';
 
-import 'package:f5_traveler/utils/app_routes.dart';
-
 class CountryItem extends StatelessWidget {
-  final Country country;
+  Country country;
 
-  const CountryItem(this.country);
+  CountryItem(this.country);
 
   void _selectCountry(BuildContext context) {
-    //usar o navigator para fazer o push
-    //colocar mais uma tela na nossa pilha de telas
     /*
-    PARTE 1 - sem rotas nomeadas
-    Navigator.of(context).push(
-      MaterialPageRoute(
-        builder: (_) {
-          return CountryPlacesScreen(country);
-        },
-      ),
-    );
+    Navigator.of(context).push(MaterialPageRoute(
+      builder: (_) {
+        return CountryPlacesScreen(country);
+      },
+    ));
     */
-
-    /* FORMA 1
-    Navigator.of(context).pushNamed(
-      '/country-places',
-      arguments: country,
-    );
-    */
-
     Navigator.of(context).pushNamed(
       AppRoutes.COUNTRY_PLACES,
       arguments: country,
@@ -41,10 +27,8 @@ class CountryItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      //tornando elemento clicável
       onTap: () => _selectCountry(context),
-      splashColor: Theme.of(context).primaryColor, //cor do clique
-      borderRadius: BorderRadius.circular(15), //clique dentro da área esperada
+      splashColor: Theme.of(context).primaryColor,
       child: Container(
         padding: EdgeInsets.all(15),
         child: Text(

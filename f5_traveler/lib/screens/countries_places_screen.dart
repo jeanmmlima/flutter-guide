@@ -1,5 +1,7 @@
+import 'package:f5_traveler/components/place_item.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import '../data/my_data.dart';
 
 import '../models/country.dart';
 
@@ -19,13 +21,19 @@ class CountryPlacesScreen extends StatelessWidget {
 
     final country = ModalRoute.of(context)!.settings.arguments as Country;
 
+    final countryPlaces = DUMMY_PLACES.where((places) {
+      return places.paises.contains(country.id);
+    }).toList();
+
     return Scaffold(
       appBar: AppBar(
         title: Text(country.title),
       ),
-      body: Center(
-        child: Text('Lugares por País ${country.id}'),
-      ),
+      body: ListView.builder(
+          itemCount: countryPlaces.length,
+          itemBuilder: (ctx, index) {
+            return PlaceItem(countryPlaces[index]);
+          }),
     );
   }
 }

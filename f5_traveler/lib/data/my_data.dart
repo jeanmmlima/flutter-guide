@@ -60,7 +60,7 @@ const DUMMY_PLACES = const [
       '3. Não jogue lixo na praia'
     ],
     imagemUrl:
-        'https://vidasemparedes.com.br/wp-content/uploads/2020/03/natal-rn-vidasemparedes-11.jpg',
+        'https://s2.glbimg.com/Qgl26Ze8x7iJ1HoFwwRkwfjgGrM=/smart/e.glbimg.com/og/ed/f/original/2020/11/05/brasil-tem-duas-praias-entre-as-cinco-melhores-do-mundo.jpg',
   ),
   Place(
     id: 'p2',
@@ -74,7 +74,7 @@ const DUMMY_PLACES = const [
       '3. Roupa para frio'
     ],
     imagemUrl:
-        'https://super.abril.com.br/wp-content/uploads/2020/10/chuva-montanha_site.jpg',
+        'https://images.memphistours.com/large/60e4be05c4ef4373c71802b0dd3f9e62.jpg',
   ),
   Place(
     id: 'p3',
