@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'TipsForTravelers',
+      title: 'DicasParaViajantes2',
       theme: ThemeData(
           colorScheme: ThemeData()
               .colorScheme
@@ -28,7 +28,7 @@ class MyApp extends StatelessWidget {
                 fontFamily: 'RobotoCondensed',
               ))),
       //home: CountriesScreen(),
-
+      initialRoute: AppRoutes.HOME,
       //rota inicial
       //ROTAS NOMEADAS
       routes: {
@@ -38,8 +38,8 @@ class MyApp extends StatelessWidget {
         '/country-places': (ctx) => CountryPlacesScreen(),
         '/': (ctx) => CountriesScreen(), // vira a rota raiz (home)
         */
-        AppRoutes.COUNTRY_PLACES: (ctx) => CountryPlacesScreen(),
         AppRoutes.HOME: (ctx) => CountriesScreen(),
+        AppRoutes.COUNTRY_PLACES: (ctx) => CountryPlacesScreen(),
       },
     );
   }
