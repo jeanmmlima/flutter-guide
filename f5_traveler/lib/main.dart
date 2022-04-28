@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:f5_traveler/screens/countries_places_screen.dart';
 import 'package:f5_traveler/screens/place_detail_screen.dart';
+import 'package:f5_traveler/screens/settings_screen.dart';
 import 'package:f5_traveler/screens/tabs_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -43,7 +44,8 @@ class MyApp extends StatelessWidget {
         */
         AppRoutes.HOME: (ctx) => TabsScreen(),
         AppRoutes.COUNTRY_PLACES: (ctx) => CountryPlacesScreen(),
-        AppRoutes.PLACES_DETAIL: (ctx) => PlaceDetailScreen()
+        AppRoutes.PLACES_DETAIL: (ctx) => PlaceDetailScreen(),
+        AppRoutes.SETTINGS: (context) => SettingsScreen(),
       },
       onGenerateRoute: (settings) {
         //priridade para as rotas de cima - no routes
