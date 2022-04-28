@@ -57,7 +57,8 @@ const DUMMY_PLACES = const [
     recomendacoes: [
       '1. Leve protetor solar',
       '2. Se hidrate',
-      '3. Não jogue lixo na praia'
+      '3. Não jogue lixo na praia',
+      '4. Tome água de coco'
     ],
     imagemUrl:
         'https://s2.glbimg.com/Qgl26Ze8x7iJ1HoFwwRkwfjgGrM=/smart/e.glbimg.com/og/ed/f/original/2020/11/05/brasil-tem-duas-praias-entre-as-cinco-melhores-do-mundo.jpg',

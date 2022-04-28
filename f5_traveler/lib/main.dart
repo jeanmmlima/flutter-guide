@@ -1,6 +1,8 @@
 import 'dart:ui';
 
 import 'package:f5_traveler/screens/countries_places_screen.dart';
+import 'package:f5_traveler/screens/place_detail_screen.dart';
+import 'package:f5_traveler/screens/tabs_screen.dart';
 import 'package:flutter/material.dart';
 
 import 'screens/countries_screen.dart';
@@ -23,10 +25,11 @@ class MyApp extends StatelessWidget {
           fontFamily: 'Raleway',
           canvasColor: Color.fromRGBO(255, 254, 229, 1),
           textTheme: ThemeData.light().textTheme.copyWith(
-                  headline6: TextStyle(
-                fontSize: 20,
-                fontFamily: 'RobotoCondensed',
-              ))),
+                headline6: TextStyle(
+                  fontSize: 20,
+                  fontFamily: 'RobotoCondensed',
+                ),
+              )),
       //home: CountriesScreen(),
       initialRoute: AppRoutes.HOME,
       //rota inicial
@@ -38,8 +41,26 @@ class MyApp extends StatelessWidget {
         '/country-places': (ctx) => CountryPlacesScreen(),
         '/': (ctx) => CountriesScreen(), // vira a rota raiz (home)
         */
-        AppRoutes.HOME: (ctx) => CountriesScreen(),
+        AppRoutes.HOME: (ctx) => TabsScreen(),
         AppRoutes.COUNTRY_PLACES: (ctx) => CountryPlacesScreen(),
+        AppRoutes.PLACES_DETAIL: (ctx) => PlaceDetailScreen()
+      },
+      onGenerateRoute: (settings) {
+        //priridade para as rotas de cima - no routes
+        if (settings.name == '/alguma-coisa') {
+          return null;
+        } else if (settings.name == '/outra-coisa') {
+          return null;
+        } else {
+          return MaterialPageRoute(builder: (_) {
+            return CountriesScreen();
+          });
+        }
+      },
+      onUnknownRoute: (settings) {
+        return MaterialPageRoute(builder: (_) {
+          return CountriesScreen();
+        });
       },
     );
   }

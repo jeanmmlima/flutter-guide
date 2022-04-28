@@ -1,4 +1,5 @@
 import 'package:f5_traveler/models/place.dart';
+import 'package:f5_traveler/utils/app_routes.dart';
 import 'package:flutter/material.dart';
 
 class PlaceItem extends StatelessWidget {
@@ -6,12 +7,18 @@ class PlaceItem extends StatelessWidget {
 
   const PlaceItem(this.place);
 
-  void _selectPlace() {}
+  void _selectPlace(BuildContext context) {
+    Navigator.of(context).pushNamed(
+      AppRoutes.PLACES_DETAIL,
+      arguments:
+          place, //passar um map com chave valor para passar mais de um argumento
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: _selectPlace,
+      onTap: () => _selectPlace(context),
       child: Card(
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
         elevation: 4,
