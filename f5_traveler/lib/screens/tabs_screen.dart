@@ -1,9 +1,14 @@
 import 'package:f5_traveler/components/main_drawer.dart';
+import 'package:f5_traveler/models/place.dart';
 import 'package:f5_traveler/screens/countries_screen.dart';
 import 'package:f5_traveler/screens/favorite_screen.dart';
 import 'package:flutter/material.dart';
 
 class TabsScreen extends StatefulWidget {
+  final List<Place> favoritePlaces;
+
+  const TabsScreen(this.favoritePlaces);
+
   @override
   State<TabsScreen> createState() => _TabsScreenState();
 }
@@ -11,7 +16,14 @@ class TabsScreen extends StatefulWidget {
 class _TabsScreenState extends State<TabsScreen> {
   int _selectedScreenIndex = 0;
 
-  final List<Widget> _screens = [CountriesScreen(), FavoriteScreen()];
+  late List<Widget> _screens;
+
+  @override
+  void initState() {
+    super.initState();
+    _screens = [CountriesScreen(), FavoriteScreen(widget.favoritePlaces)];
+  }
+
   final List<String> _titles = [
     'Lista de Categorias',
     'Meus Favoritos',

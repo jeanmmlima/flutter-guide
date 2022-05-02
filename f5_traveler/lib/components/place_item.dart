@@ -8,11 +8,31 @@ class PlaceItem extends StatelessWidget {
   const PlaceItem(this.place);
 
   void _selectPlace(BuildContext context) {
+    /*
     Navigator.of(context).pushNamed(
       AppRoutes.PLACES_DETAIL,
       arguments:
           place, //passar um map com chave valor para passar mais de um argumento
     );
+    */
+
+    //pushNamed tem retorno no Futuro de alguma informação que VOLTOU para a janela corrente quando a.
+    //janela atual é removida da pilha
+    //quando a rota PLACES_DETAIL foi removida da pilha retorna uma resultado
+
+    //Future e then lida com sincronismo - puxar dados do back de uma aplicação
+    Navigator.of(context)
+        .pushNamed(
+      AppRoutes.PLACES_DETAIL,
+      arguments: place,
+    )
+        .then((result) {
+      if (result == null) {
+        print('Sem resultado!');
+      } else {
+        print('O nome do lugar é: ${result}');
+      }
+    });
   }
 
   @override
