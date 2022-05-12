@@ -1,17 +1,41 @@
 import 'dart:ui';
-
+import 'package:f5_traveler/models/place.dart';
 import 'package:f5_traveler/screens/countries_places_screen.dart';
+import 'package:f5_traveler/screens/place_detail_screen.dart';
+import 'package:f5_traveler/screens/settings_screen.dart';
+import 'package:f5_traveler/screens/tabs_screen.dart';
 import 'package:flutter/material.dart';
 
 import 'screens/countries_screen.dart';
 
+import 'utils/app_routes.dart';
+
 void main() => runApp(MyApp());
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  List<Place> _favoritePlaces = [];
+
+  void _toggleFavorite(Place place) {
+    setState(() {
+      _favoritePlaces.contains(place)
+          ? _favoritePlaces.remove(place)
+          : _favoritePlaces.add(place);
+    });
+  }
+
+  bool _isFavorite(Place place) {
+    return _favoritePlaces.contains(place);
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'TipsForTravelers',
+      title: 'DicasParaViajantes2',
       theme: ThemeData(
           colorScheme: ThemeData()
               .colorScheme
@@ -21,11 +45,45 @@ class MyApp extends StatelessWidget {
           fontFamily: 'Raleway',
           canvasColor: Color.fromRGBO(255, 254, 229, 1),
           textTheme: ThemeData.light().textTheme.copyWith(
-                  headline6: TextStyle(
-                fontSize: 20,
-                fontFamily: 'RobotoCondensed',
-              ))),
-      home: CountriesScreen(),
+                headline6: TextStyle(
+                  fontSize: 20,
+                  fontFamily: 'RobotoCondensed',
+                ),
+              )),
+      //home: CountriesScreen(),
+      initialRoute: AppRoutes.HOME,
+      //rota inicial
+      //ROTAS NOMEADAS
+      routes: {
+        //nome : e função que retorna o widget (screen) a
+        //partir da rota declarada
+        /* FORMA 1
+        '/country-places': (ctx) => CountryPlacesScreen(),
+        '/': (ctx) => CountriesScreen(), // vira a rota raiz (home)
+        */
+        AppRoutes.HOME: (ctx) => TabsScreen(_favoritePlaces),
+        AppRoutes.COUNTRY_PLACES: (ctx) => CountryPlacesScreen(),
+        AppRoutes.PLACES_DETAIL: (ctx) =>
+            PlaceDetailScreen(_toggleFavorite, _isFavorite),
+        AppRoutes.SETTINGS: (context) => SettingsScreen(),
+      },
+      onGenerateRoute: (settings) {
+        //priridade para as rotas de cima - no routes
+        if (settings.name == '/alguma-coisa') {
+          return null;
+        } else if (settings.name == '/outra-coisa') {
+          return null;
+        } else {
+          return MaterialPageRoute(builder: (_) {
+            return CountriesScreen();
+          });
+        }
+      },
+      onUnknownRoute: (settings) {
+        return MaterialPageRoute(builder: (_) {
+          return CountriesScreen();
+        });
+      },
     );
   }
 }
