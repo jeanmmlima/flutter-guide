@@ -1,5 +1,7 @@
+
 import 'package:f5_traveler/components/place_item.dart';
 import 'package:flutter/foundation.dart';
+import 'package:f5_traveler/models/country.dart';
 import 'package:flutter/material.dart';
 import '../data/my_data.dart';
 
@@ -34,6 +36,18 @@ class CountryPlacesScreen extends StatelessWidget {
           itemBuilder: (ctx, index) {
             return PlaceItem(countryPlaces[index]);
           }),
+    /*
+    final country = ModalRoute.of(context)!.settings.arguments as Country;
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Lugares para Conhecer'),
+        //teste
+        //teste
+        //teste
+      ),
+      body: Center(
+        child: Text('País selecionado: '),
+      ), */
     );
   }
 }

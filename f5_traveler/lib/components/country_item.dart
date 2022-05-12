@@ -24,6 +24,8 @@ class CountryItem extends StatelessWidget {
     );
   }
 
+  const CountryItem(this.country);
+
   @override
   Widget build(BuildContext context) {
     return InkWell(

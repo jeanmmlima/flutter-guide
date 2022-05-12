@@ -1,5 +1,4 @@
 import 'dart:ui';
-
 import 'package:f5_traveler/models/place.dart';
 import 'package:f5_traveler/screens/countries_places_screen.dart';
 import 'package:f5_traveler/screens/place_detail_screen.dart';
