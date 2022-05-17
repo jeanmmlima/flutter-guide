@@ -10,7 +10,7 @@ class CartModel extends ChangeNotifier {
 
   set catalog(CatalogModel newCatalog) {
     _catalog = newCatalog;
-
+    //notifica ouvintes
     notifyListeners();
   }
 
