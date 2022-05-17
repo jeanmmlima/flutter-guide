@@ -14,23 +14,19 @@ void main() {
   runApp(const MyApp());
 }
 
-const double windowWidth = 400;
-const double windowHeight = 800;
-
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    // Using MultiProvider is convenient when providing multiple objects.
+    //Usar MultiProvider quando é necessário prover múltiplos componentes.
     return MultiProvider(
       providers: [
-        // In this sample app, CatalogModel never changes, so a simple Provider
-        // is sufficient.
+        //Simples provider já que catálogo não muda
         Provider(create: (context) => CatalogModel()),
-        // CartModel is implemented as a ChangeNotifier, which calls for the use
-        // of ChangeNotifierProvider. Moreover, CartModel depends
-        // on CatalogModel, so a ProxyProvider is needed.
+        // CartModel é implementado como um ChangeNotifier, que chama para o uso
+        // de ChangeNotifierProvider. Além disso, CartModel depende
+        // no CatalogModel, portanto, é necessário um ProxyProvider.
         ChangeNotifierProxyProvider<CatalogModel, CartModel>(
           create: (context) => CartModel(),
           update: (context, catalog, cart) {

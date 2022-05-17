@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
-/// A proxy of the catalog of items the user can buy.
+/// Um proxy do catálogo de itens que o usuário pode comprar.
 ///
-/// In a real app, this might be backed by a backend and cached on device.
-/// In this sample app, the catalog is procedurally generated and infinite.
+/// Em um aplicativo real, isso pode ser apoiado por um back-end e armazenado em cache no dispositivo.
+/// Neste aplicativo de exemplo, o catálogo é gerado processualmente e infinito.
 ///
-/// For simplicity, the catalog is expected to be immutable (no products are
-/// expected to be added, removed or changed during the execution of the app).
+/// Por simplicidade, espera-se que o catálogo seja imutável (nenhum produto é
+/// espera-se que seja adicionado, removido ou alterado durante a execução do aplicativo).
 class CatalogModel {
   static List<String> itemNames = [
     'Code Smell',
@@ -26,15 +26,14 @@ class CatalogModel {
     'Currying',
   ];
 
-  /// Get item by [id].
+  /// Obter item por [id].
   ///
-  /// In this sample, the catalog is infinite, looping over [itemNames].
+  /// Neste exemplo, o catálogo é infinito, fazendo um loop sobre [itemNames].
   Item getById(int id) => Item(id, itemNames[id % itemNames.length]);
 
-  /// Get item by its position in the catalog.
   Item getByPosition(int position) {
-    // In this simplified case, an item's position in the catalog
-    // is also its id.
+    // Neste caso simplificado, a posição de um item no catálogo
+    // também é seu id.
     return getById(position);
   }
 }
@@ -47,8 +46,6 @@ class Item {
   final int price = 42;
 
   Item(this.id, this.name)
-      // To make the sample app look nicer, each item is given one of the
-      // Material Design primary colors.
       : color = Colors.primaries[id % Colors.primaries.length];
 
   @override

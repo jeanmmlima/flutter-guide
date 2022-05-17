@@ -30,14 +30,14 @@ class _AddButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // The context.select() method will let you listen to changes to
-    // a *part* of a model. You define a function that "selects" (i.e. returns)
-    // the part you're interested in, and the provider package will not rebuild
-    // this widget unless that particular part of the model changes.
+    // O método context.select() permitirá que você ouça as alterações de
+    // uma *parte* de um modelo. Você define uma função que "seleciona" (ou seja, retorna)
+    // a parte em que você está interessado e o Provider não vai reconstruir
+    // este widget, a menos que essa parte específica do modelo seja alterada.
     //
-    // This can lead to significant performance improvements.
+    // Isso pode levar a melhorias significativas de desempenho.
     var isInCart = context.select<CartModel, bool>(
-      // Here, we are only interested whether [item] is inside the cart.
+      // Aqui, estamos interessados apenas se [item] está dentro do carrinho.
       (cart) => cart.items.contains(item),
     );
 
@@ -45,10 +45,10 @@ class _AddButton extends StatelessWidget {
       onPressed: isInCart
           ? null
           : () {
-              // If the item is not in cart, we let the user add it.
-              // We are using context.read() here because the callback
-              // is executed whenever the user taps the button. In other
-              // words, it is executed outside the build method.
+              // Se o item não estiver no carrinho, deixamos o usuário adicioná-lo.
+              // Estamos usando context.read() aqui porque o retorno de chamada
+              // é executado sempre que o usuário toca no botão. Em outras
+              // palavras, ele é executado fora do método build.
               var cart = context.read<CartModel>();
               cart.add(item);
             },
@@ -57,7 +57,7 @@ class _AddButton extends StatelessWidget {
           if (states.contains(MaterialState.pressed)) {
             return Theme.of(context).primaryColor;
           }
-          return null; // Defer to the widget's default.
+          return null;
         }),
       ),
       child: isInCart
@@ -91,8 +91,8 @@ class _MyListItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var item = context.select<CatalogModel, Item>(
-      // Here, we are only interested in the item at [index]. We don't care
-      // about any other change.
+      // Aqui, estamos interessados apenas no item em [index]. Nós não nos importamos
+      // sobre qualquer outra mudança.
       (catalog) => catalog.getByPosition(index),
     );
     var textTheme = Theme.of(context).textTheme.headline6;

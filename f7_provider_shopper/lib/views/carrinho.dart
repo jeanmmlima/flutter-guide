@@ -1,7 +1,3 @@
-// Copyright 2019 The Flutter team. All rights reserved.
-// Use of this source code is governed by a BSD-style license that can be
-// found in the LICENSE file.
-
 import 'package:f7_provider_shopper/models/carrinho.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -39,9 +35,9 @@ class _CartList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var itemNameStyle = Theme.of(context).textTheme.headline6;
-    // This gets the current state of CartModel and also tells Flutter
-    // to rebuild this widget when CartModel notifies listeners (in other words,
-    // when it changes).
+    // Isso obtém o estado atual do CartModel e também informa ao Flutter
+    // para reconstruir este widget quando o CartModel notificar os ouvintes (em outras palavras,
+    // quando muda).
     var cart = context.watch<CartModel>();
 
     return ListView.builder(
@@ -75,12 +71,12 @@ class _CartTotal extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            // Another way to listen to a model's change is to include
-            // the Consumer widget. This widget will automatically listen
-            // to CartModel and rerun its builder on every change.
+            // Outra maneira de ouvir a mudança de um modelo é incluir
+            // o widget Consumidor. Este widget ouvirá automaticamente
+            // para CartModel e execute novamente seu construtor a cada alteração.
             //
-            // The important thing is that it will not rebuild
-            // the rest of the widgets in this build method.
+            // O importante é que não será reconstruído
+            // o resto dos widgets neste método de construção.
             Consumer<CartModel>(
                 builder: (context, cart, child) =>
                     Text('\$${cart.totalPrice}', style: hugeStyle)),
