@@ -1,4 +1,6 @@
+import 'package:f8_eshop/model/cart.dart';
 import 'package:f8_eshop/model/product_list.dart';
+import 'package:f8_eshop/pages/cart_page.dart';
 import 'package:f8_eshop/pages/product_detail_page.dart';
 import 'package:f8_eshop/pages/products_overview_page.dart';
 import 'package:f8_eshop/utils/app_routes.dart';
@@ -15,8 +17,11 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: (context) => ProductList(),
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => ProductList()),
+        ChangeNotifierProvider(create: (_) => Cart())
+      ],
       child: MaterialApp(
         title: 'Minha Loja',
         theme: ThemeData(
@@ -27,6 +32,7 @@ class MyApp extends StatelessWidget {
         home: ProductsOverviewPage(),
         routes: {
           AppRoutes.PRODUCT_DETAIL: (ctx) => ProductDetailPage(),
+          AppRoutes.CART: (context) => CartPage(),
         },
         debugShowCheckedModeBanner: false,
       ),

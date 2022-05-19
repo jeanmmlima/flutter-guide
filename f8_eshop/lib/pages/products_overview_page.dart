@@ -1,8 +1,11 @@
+import 'package:f8_eshop/components/badge.dart';
 import 'package:f8_eshop/components/product_grid.dart';
 import 'package:f8_eshop/components/product_item.dart';
 import 'package:f8_eshop/data/dummy_data.dart';
+import 'package:f8_eshop/model/cart.dart';
 import 'package:f8_eshop/model/product.dart';
 import 'package:f8_eshop/model/product_list.dart';
+import 'package:f8_eshop/utils/app_routes.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -53,6 +56,17 @@ class _ProductsOverviewPageState extends State<ProductsOverviewPage> {
               });
             },
           ),
+          Consumer<Cart>(
+            builder: (ctx, cart, child) => Badge(
+              value: cart.itemsCount.toString(),
+              child: IconButton(
+                onPressed: () {
+                  Navigator.of(context).pushNamed(AppRoutes.CART);
+                },
+                icon: Icon(Icons.shopping_cart),
+              ),
+            ),
+          )
         ],
       ),
       body: ProductGrid(_showOnlyFavorite),

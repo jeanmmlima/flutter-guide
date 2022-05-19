@@ -1,3 +1,4 @@
+import 'package:f8_eshop/model/cart.dart';
 import 'package:f8_eshop/model/product.dart';
 import 'package:f8_eshop/utils/app_routes.dart';
 import 'package:flutter/material.dart';
@@ -21,6 +22,7 @@ class ProductItem extends StatelessWidget {
       context,
       listen: false,
     );
+    final cart = Provider.of<Cart>(context, listen: false);
     //final product = context.watch<Product>();
 
     /*
@@ -59,11 +61,14 @@ class ProductItem extends StatelessWidget {
             ),
           ),
           title: Text(
-            product.title,
+            product.name,
             textAlign: TextAlign.center,
           ),
           trailing: IconButton(
-              onPressed: () {},
+              onPressed: () {
+                cart.addItem(product);
+                print(cart.itemsCount);
+              },
               icon: Icon(Icons.shopping_cart),
               color: Theme.of(context).colorScheme.secondary),
         ),
