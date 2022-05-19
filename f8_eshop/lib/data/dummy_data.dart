@@ -15,7 +15,7 @@ final dummyProducts = [
     description: 'A nice pair of trousers.',
     price: 59.99,
     imageUrl:
-        'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/Trousers%2C_dress_%28AM_1960.022-8%29.jpg/512px-Trousers%2C_dress_%28AM_1960.022-8%29.jpg',
+        'https://5.imimg.com/data5/LN/PI/JS/SELLER-3749501/corparate-trouser-500x500.jpg',
   ),
   Product(
     id: 'p3',
@@ -30,6 +30,6 @@ final dummyProducts = [
     description: 'Prepare any meal you want.',
     price: 49.99,
     imageUrl:
-        'https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/Cast-Iron-Pan.jpg/1024px-Cast-Iron-Pan.jpg',
+        'https://www.telegraph.co.uk/content/dam/food-and-drink/2018/10/19/Solidteknics_frying-pan_recommended_trans_NvBQzQNjv4BqqVzuuqpFlyLIwiB6NTmJwfSVWeZ_vEN7c6bHu2jJnT8.png?imwidth=960',
   ),
 ];
