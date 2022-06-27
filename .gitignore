@@ -48,6 +48,8 @@
 */android/
 */ios/
 */test/
+*/linux/
+*/macos/
 */web/
 */windows/
 */.gitignore
