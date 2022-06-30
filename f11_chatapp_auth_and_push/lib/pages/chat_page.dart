@@ -16,7 +16,7 @@ class ChatPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Cod3r Chat'),
+        title: Text('Chat IMD0509'),
         actions: [
           DropdownButtonHideUnderline(
             child: DropdownButton(

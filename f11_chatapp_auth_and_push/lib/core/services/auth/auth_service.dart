@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:f11_chatapp_auth_and_push/core/models/chat_user.dart';
+import 'package:f11_chatapp_auth_and_push/core/services/auth/auth_firebase_service.dart';
 import 'package:f11_chatapp_auth_and_push/core/services/auth/auth_mock_service.dart';
 
 //Poderia usar o ChaangeNotificer?
@@ -29,7 +30,7 @@ abstract class AuthService {
 
   //Retorna uma implementação a partir da classe mais genérica
   factory AuthService() {
-    return AuthMockService();
-    // return AuthFirebaseService();
+    //return AuthMockService();
+    return AuthFirebaseService();
   }
 }

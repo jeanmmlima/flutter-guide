@@ -17,9 +17,9 @@ class MyApp extends StatelessWidget {
         ),
       ],
       child: MaterialApp(
-        title: 'Flutter Demo',
+        title: 'Exemplo Firebaseapp',
         theme: ThemeData(
-          primarySwatch: Colors.blue,
+          primarySwatch: Colors.purple,
         ),
         home: AuthOrAppPage(),
         debugShowCheckedModeBanner: false,
